@@ -28,7 +28,7 @@ class DynamicStoragePlugin
     ): ?UrlRewrite {
         if (($result = $proceed($data)) !== null) {
             return $result;
-        } elseif (strpos($data['request_path'], '/') === false) {
+        } elseif (!isset($data['request_path']) || strpos($data['request_path'], '/') === false) {
             return null;
         }
 
